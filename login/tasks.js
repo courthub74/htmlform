@@ -30,18 +30,41 @@ document.querySelector("#send").addEventListener('click', () => {
 
 // FROM DATABASE
 
-// create a snapshot of the database
-firebaseRef.on("value", function(snapshot) {
-  var data = snapshot.val();
-  for(let i in data){
-    console.log(data[i]);
+// test print the database reference
+console.log(firebaseRef);  
+
+// utilize the on function 
+// and pass the getData function as an argument
+  // function to locate the firebase db 
+    // then iterate through it to manipulate
+// and pass the errData function as an argument
+  // this function tests for errors 
+    // i.e. permissions, other blocks
+firebaseRef.on('value', getData, errData);
+
+// create the getData function 
+  // pass the argument 'data'
+function getData(data) {
+  // test print the values of each node
+  console.log(data.val());
+  // set variable to get the value of each task (or node) 
+  var tasks = data.val();
+  // set variable to get the keys of each task
+  var keys = Object.keys(tasks);
+  // test print the keys
+  console.log(keys);
+  // iterate through all of the tasks
+  for(let i in tasks){
+    // test print the iteration
+    console.log(tasks[i]);
+    // create the output in HTML
+    document.querySelector("#tasker").innerHTML +=`
+    <div>${tasks[i]}</div>
+    `
   }
-  // function called element that iterates through each
-  // snapshot.forEach(function(element) {
-  //   // grab the innerHTML of the input id field
-  //   // document.querySelector('#root').innerHTML +=`
-  //   //   <div>${element.val()}</div>
-  //   // `
-  // })
-  
-})
+}
+
+// create the errData function
+function errData(err) {
+  console.log(err);
+}
