@@ -45,6 +45,11 @@ firebaseRef.on('value', getData, errData);
 // create the getData function 
   // pass the argument 'data'
 function getData(data) {
+     // to clear the double listing
+    //  var tasklisting = selectAll('.tasklisting');
+    //  for (var i = 0; i < tasklisting.length; i++) {
+    //    tasklisting[i].remove()
+    //  }
   // test print the values of each node
   console.log(data.val());
   // set variable to get the value of each task (or node) 
@@ -57,6 +62,9 @@ function getData(data) {
   for(let i in tasks){
     // test print the iteration
     console.log(tasks[i]);
+    // create a new element
+    // var li = createElement('li', tasks[i]);
+    // li.parent('tasklister');
     // create the output in HTML
     document.querySelector("#tasker").innerHTML +=`
     <div>${tasks[i]}</div>
