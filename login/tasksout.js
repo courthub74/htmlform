@@ -21,6 +21,7 @@ const firebaseConfig = {
   function gotData(data) {
 
     // to remove the tasks
+    // FOR THE DELETE BUTTON
     // var taskslist = selectAll('#taskslist');
     // for (var i = 0; i < taskslist.length; i++) {
     //     taskslist[i].remove();
